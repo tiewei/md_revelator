@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+
+$:.unshift(File.expand_path("../../lib", __FILE__))
+
+require "md_revelator"
+
+input = File.expand_path ARGV[0]
+
+if File.readable?(input)
+  puts "INPUT - #{input}"
+else
+  puts "#{input} is not readable"
+  exit 1
+end
+
+output = File.expand_path ARGV[1]
+
+if File.directory?(output) && File.writable?(output)
+  puts "OUTPUT - #{output}"
+else
+  puts "#{output} is not a writable folder"
+  exit 1
+end
+
+puts "Starting ..."
+
+Md::Revelator.reveal!(input, output)
+
+puts "SUCCESS"
+
+puts "Please open #{output}/index.html in browser"
