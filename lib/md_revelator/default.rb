@@ -40,6 +40,12 @@ module Md::Revelator
       %w(local).freeze
     end
 
+    def fragment_styles
+      [ "", "grow", "shrink", "roll-in", "fade-out", "current-visible",
+        "highlight-red", "highlight-blue", "highlight-green", 
+        "highlight-current-blue", "highlight-current-green","highlight-current-red"].freeze
+    end
+
     def autoSlides
       auto = Object.new
       auto.define_singleton_method(:include?){|args| args>0}

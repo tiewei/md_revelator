@@ -4,28 +4,16 @@ $:.unshift(File.expand_path("../../lib", __FILE__))
 
 require "md_revelator"
 
-input = File.expand_path ARGV[0]
-
-if File.readable?(input)
-  puts "INPUT - #{input}"
-else
-  puts "#{input} is not readable"
-  exit 1
-end
-
-output = File.expand_path ARGV[1]
-
-if File.directory?(output) && File.writable?(output)
-  puts "OUTPUT - #{output}"
-else
-  puts "#{output} is not a writable folder"
-  exit 1
-end
-
 puts "Starting ..."
 
-Md::Revelator.reveal!(input, output)
+if !ARGV[0] or !ARGV[1] or !ARGV[2]
+  puts "md2reveal accepts exactly 3 parameters - input file, output directory, and version"
+  exit 1
+end
+puts "0 - #{ARGV[0]},1 - #{ARGV[1]} 2 - #{ARGV[2]}"
+
+output_name = Md::Revelator.reveal!(ARGV[0], ARGV[1], ARGV[2])
 
 puts "SUCCESS"
 
-puts "Please open #{output}/index.html in browser"
+puts "Please open #{output_name} in browser"

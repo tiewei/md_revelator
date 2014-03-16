@@ -8,7 +8,8 @@ module Md::Revelator
         def do_reveal(input_file, output_dir)
           simple_revelator = SimpleRevelator.new
           simple_revelator.load input_file
-          simple_revelator.render output_dir
+          output_name = File.basename(input_file, File.extname(input_file))
+          simple_revelator.render(output_dir, output_name)
         end
       end
 
@@ -28,7 +29,7 @@ module Md::Revelator
         end
       end
 
-      def render(output_dir)
+      def render(output_dir, output_name)
         template = "#{File.dirname(__FILE__)}/reveal_index.erb"
         index = ERB.new(File.read(template))
         output = index.result(binding)
@@ -36,7 +37,8 @@ module Md::Revelator
           reveal_js = "#{File.dirname(__FILE__)}/../../reveal.js-2.6.1/*"
           FileUtils.cp_r(Dir.glob(reveal_js) , output_dir)
         end
-        File.open("#{output_dir}/index.html", 'w') {|file| file.write(output)}
+        File.open("#{output_dir}/#{output_name}.html", 'w') {|file| file.write(output)}
+        return "#{output_dir}/#{output_name}.html"
       end
 
 
@@ -55,7 +57,7 @@ module Md::Revelator
               (Md::Revelator.no_enum_configs.include?(k.to_sym) \
                 or Md::Revelator.send("#{k}s".to_sym).include?(v))
 
-              @metadata.merge!({ k.to_sym => v})
+              @metadata[k.to_sym] = v
             end
 
             pre2, pre1, line = pre1, line, file.gets
