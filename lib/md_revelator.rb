@@ -42,7 +42,7 @@ module Md
         else
           puts "version must be in 1 or 2"
           puts "version 1 : using 3 or more '='/'+' to separate slides, \ 
-                support sub-slides by using different separations"
+                support vertical slides by using different separations"
           puts "version 2 : using markdown <hr/> to separate slides, \ 
                 support fragment with ${style} at the start of <p> <li> <h>"
           exit 1
