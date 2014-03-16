@@ -13,7 +13,8 @@ module Md
           require "md_revelator/simple_revelator"
           SimpleRevelator.do_reveal(input_file, output_dir)
         when 2
-          #do redcarpet based full generate
+          require "md_revelator/redcarpet_revelator"
+          Redcarpet_Revelator.do_reveal(input_file, output_dir)
         end
       end
     end

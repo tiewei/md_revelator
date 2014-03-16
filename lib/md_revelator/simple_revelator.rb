@@ -55,7 +55,7 @@ module Md::Revelator
               (Md::Revelator.no_enum_configs.include?(k.to_sym) \
                 or Md::Revelator.send("#{k}s".to_sym).include?(v))
 
-              @metadata.merge!({ k.to_sym => v})
+              @metadata[k.to_sym] = v
             end
 
             pre2, pre1, line = pre1, line, file.gets
