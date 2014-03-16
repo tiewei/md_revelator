@@ -4,40 +4,15 @@ $:.unshift(File.expand_path("../../lib", __FILE__))
 
 require "md_revelator"
 
-input = File.expand_path ARGV[0]
-
-if File.readable?(input)
-  puts "INPUT - #{input}"
-else
-  puts "#{input} is not readable"
-  exit 1
-end
-
-output = File.expand_path ARGV[1]
-
-if File.directory?(output) && File.writable?(output)
-  puts "OUTPUT - #{output}"
-else
-  puts "#{output} is not a writable folder"
-  exit 1
-end
-
-version = ARGV[2]
-if %w(1 2).include? version
-  version = version.to_i
-  puts "VERSION - #{version}"
-else
-  puts "version must be in 1 or 2"
-  puts "version 1 : using 3 or more '=' / '+' to separate slides, \ 
-        support sub-slides by using different separations"
-  puts "version 2 : using markdown <hr/> to separate slides, \ 
-        support fragment with ${style} at the start of <p> <li> <h>"
-  exit 1
-end
-
 puts "Starting ..."
 
-Md::Revelator.reveal!(input, output, version)
+if !ARGV[0] or !ARGV[1] or !ARGV[2]
+  puts "md2reveal accepts exactly 3 parameters - input file, output directory, and version"
+  exit 1
+end
+puts "0 - #{ARGV[0]},1 - #{ARGV[1]} 2 - #{ARGV[2]}"
+
+Md::Revelator.reveal!(ARGV[0], ARGV[1], ARGV[2])
 
 puts "SUCCESS"
 
