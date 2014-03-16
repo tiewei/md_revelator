@@ -12,8 +12,8 @@ if !ARGV[0] or !ARGV[1] or !ARGV[2]
 end
 puts "0 - #{ARGV[0]},1 - #{ARGV[1]} 2 - #{ARGV[2]}"
 
-Md::Revelator.reveal!(ARGV[0], ARGV[1], ARGV[2])
+output_name = Md::Revelator.reveal!(ARGV[0], ARGV[1], ARGV[2])
 
 puts "SUCCESS"
 
-puts "Please open #{output}/index.html in browser"
+puts "Please open #{output_name} in browser"
