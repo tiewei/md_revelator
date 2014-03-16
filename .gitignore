@@ -14,4 +14,3 @@ rdoc
 spec/reports
 tmp
 test/output/*
-redcarpet/*
