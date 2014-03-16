@@ -1,6 +1,6 @@
 # Md::Revelator
 
-Generated reveal.js based web slides from markdown
+Generated reveal.js based web slides from markdown, generated web slides like <http://lab.hakim.se/reveal-js/#/>
 
 ## Installation
 
