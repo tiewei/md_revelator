@@ -1,8 +1,6 @@
 require "redcarpet"
 require "yaml"
 require "md_revelator/reveal_render_helper"
-require "pry"
-require "pry-nav"
 
 module Md::Revelator
 
