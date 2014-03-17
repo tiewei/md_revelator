@@ -10,7 +10,7 @@ if !ARGV[0] or !ARGV[1] or !ARGV[2]
   puts "md2reveal accepts exactly 3 parameters - input file, output directory, and version"
   exit 1
 end
-puts "0 - #{ARGV[0]},1 - #{ARGV[1]} 2 - #{ARGV[2]}"
+puts "input - #{ARGV[0]},output dir - #{ARGV[1]}, version - #{ARGV[2]}"
 
 output_name = Md::Revelator.reveal!(ARGV[0], ARGV[1], ARGV[2])
 

@@ -57,10 +57,11 @@ Metadata is the configuration of the slides will be. Supported metadata as list:
 * `autoSlide` => 0 => (equal or larger than 0) => If large than 0, the slides will be auto play every {value} millisecond
 * `transitionSpeed` => 'default'=> (default fast slow) => the speed of slide transition
 * `backgroundTransition` => 'default'=> (default none slide concave convex zoom) => the style of background transition
-* `ref` => 'local' => (local) => currently we didn't have a CDN to store js/css, as a result `reveal.js` lib will be copy to output directory
+* `ref` => 'cdn' => (local, cdn) => if is local `reveal.js` lib will be copy to output directory, else goto cdn
 * `title` => 'Presentations generated from markdown by md-revelator' => no check => the title of the slides in html head
 * `author` =>  ENV["USER"] => no check => the author of the slides in html head
 * `description` => '' => no check => the description of the slides in html head
+* `cdn` => <http://cdn.staticfile.org/reveal.js/2.6/> => no check => the cdn host for `reveal.js`
 
 ## Usage
 
@@ -76,14 +77,22 @@ Metadata is the configuration of the slides will be. Supported metadata as list:
 
 require "md_revelator"
 
-Md::Revelator.reveal!(md\_file, output\_folder, version)
+Md::Revelator.reveal!(md_file, output_folder, version)
 
 ```
 
 
 ## DEMO
 
-The simple input could be found in test/slide-v{1|2}.md
+The simple input could be found in test/
+
+clone the project and try
+
+```
+bin/md2reveal test/slide-v1.md test/output/ 1
+
+bin/md2reveal test/slide-v2.md test/output/ 2
+```
 
 ## Contributing
 
