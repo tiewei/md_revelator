@@ -9,7 +9,8 @@ module Md::Revelator
         :autoSlide => 0,
         :transitionSpeed => 'default',
         :backgroundTransition => 'default',
-        :ref => 'local',
+        :ref => 'cdn',
+        :cdn => 'http://cdn.staticfile.org/reveal.js/2.6/',
         :title => 'Presentations generated from markdown by md-revelator',
         :author =>  ENV["USER"],
         :description => ''
@@ -17,7 +18,7 @@ module Md::Revelator
     end
 
     def no_enum_configs
-      [:title, :author, :description]
+      [:title, :author, :description, :cdn]
     end
 
     def themes
@@ -37,7 +38,7 @@ module Md::Revelator
     end
 
     def refs
-      %w(local).freeze
+      %w(local cdn).freeze
     end
 
     def fragment_styles

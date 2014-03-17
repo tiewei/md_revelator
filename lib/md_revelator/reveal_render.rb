@@ -75,6 +75,11 @@ module Md::Revelator
     end
 
     def postprocess(full_document)
+      if @metadata[:ref] == 'local'
+            @metadata[:cdn] = '' 
+      else
+        @metadata[:cdn] << '/' unless @metadata[:cdn].end_with? "/"
+      end
       render_html(full_document)
     end
 

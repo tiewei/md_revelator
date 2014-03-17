@@ -24,8 +24,8 @@ module Md::Revelator
     end
 
     def render_js
-      """<script src=\"lib/js/head.min.js\"></script>
-    <script src=\"js/reveal.min.js\"></script>
+      """<script src=\"#{metadata[:cdn]}lib/js/head.min.js\"></script>
+    <script src=\"#{metadata[:cdn]}js/reveal.min.js\"></script>
     <script>
         Reveal.initialize({
         controls: true,
@@ -37,12 +37,12 @@ module Md::Revelator
         autoSlide: #{metadata[:autoSlide]},
         backgroundTransition: '#{metadata[:backgroundTransition]}',
         dependencies: [
-          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          { src: '#{metadata[:cdn]}lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '#{metadata[:cdn]}plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '#{metadata[:cdn]}plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '#{metadata[:cdn]}plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '#{metadata[:cdn]}plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '#{metadata[:cdn]}plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
         ]
       });
     </script>"""
@@ -60,14 +60,14 @@ module Md::Revelator
 
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no\">
 
-    <link rel=\"stylesheet\" href=\"css/reveal.min.css\">
-    <link rel=\"stylesheet\" href=\"css/theme/#{metadata[:theme]}.css\" id=\"theme\">
+    <link rel=\"stylesheet\" href=\"#{metadata[:cdn]}css/reveal.min.css\">
+    <link rel=\"stylesheet\" href=\"#{metadata[:cdn]}css/theme/#{metadata[:theme]}.css\" id=\"theme\">
 
     <!-- For syntax highlighting -->
-    <link rel=\"stylesheet\" href=\"lib/css/zenburn.css\">
+    <link rel=\"stylesheet\" href=\"#{metadata[:cdn]}lib/css/zenburn.css\">
 
     <!--[if lt IE 9]>
-    <script src=\"lib/js/html5shiv.js\"></script>
+    <script src=\"#{metadata[:cdn]}lib/js/html5shiv.js\"></script>
     <![endif]-->
   </head>"""
 

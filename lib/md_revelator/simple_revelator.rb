@@ -62,6 +62,12 @@ module Md::Revelator
 
             pre2, pre1, line = pre1, line, file.gets
           end
+          #if using local js lib, no cdn needs
+          if @metadata[:ref] == 'local'
+            @metadata[:cdn] = '' 
+          else
+            @metadata[:cdn] << '/' unless @metadata[:cdn].end_with? "/"
+          end
       end
 
       def load_sections(file)
